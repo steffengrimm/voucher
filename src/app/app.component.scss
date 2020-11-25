@@ -1,0 +1,40 @@
+@import "../variables.scss";
+
+:host {
+    font-size: 13px;
+    background-color: #dddddd;
+    color: #000000;
+    position: relative;
+    overflow: hidden;
+  
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    max-width: $mobileBreakpoint;
+  
+    box-shadow: 0px 5px 10px #363635;
+  
+    @media screen and (min-width: $mobileBreakpoint){
+      max-height: 540px;
+    }
+}
+
+.poweredBy {
+    display: none;
+    @media screen and (min-width: $mobileBreakpoint){
+        display: block;
+        text-align: right;
+        background-color: #fff;
+        height: 15px;
+        line-height: 15px;
+        font-size: 10px;
+        padding-right: 6px;
+        user-select: none;
+        flex-shrink: 0;
+    }
+
+    span {
+        color: #00b1e7;
+    }
+}

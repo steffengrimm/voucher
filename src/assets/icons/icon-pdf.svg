@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20.95 28.61">
+  <g id="icon">
+      <text transform="translate(4.91 15.99)" style="font-size: 6.048799991607666px;fill: var(--stroke,#fff);font-family: Roboto-Regular, Roboto">PDF</text>
+      <path d="M13,.52H1.51a1,1,0,0,0-1,1V27.1a1,1,0,0,0,1,1H19.44a1,1,0,0,0,1-1V7.69" style="fill: none;stroke: var(--stroke,#fff);stroke-width: 1.0329999923706055px"/>
+      <path d="M13.06.52v7a.37.37,0,0,0,.37.37h7Z" style="fill: none;stroke: var(--stroke,#fff);stroke-linecap: round;stroke-linejoin: round;stroke-width: 1.0329999923706055px"/>
+      <rect width="20.95" height="28.61" style="fill: none"/>
+  </g>
+</svg>

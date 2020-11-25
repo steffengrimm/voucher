@@ -1,0 +1,35 @@
+<div class="headline">
+    Warenkorb
+</div>
+<div class="mwst">
+    Alle Beträge inkl. MwSt.
+</div>
+<div class="itemOverview">
+    <div>
+        <h3>Gutscheine</h3>
+        <div *ngFor="let voucher of allItems$ | async" class="item">
+            <span class="title">Einzelpreis</span>
+            <span class="title">Menge</span>
+            <span class="title">Summe</span>
+            <span></span>
+            <div class="infoBox">
+                {{voucher.initialValue | waehrung}}
+            </div>
+            <app-quantity [input]="voucher.quantity" (output)="changeCartItemQuantity(voucher.id, $event)"></app-quantity>
+            <div class="infoBox">
+                {{voucher.getTotalPrice() | waehrung}}
+            </div>
+            <div class="delete" (click)="deleteCartItem(voucher.id)">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10.557945 10.129832">
+                    <use xlink:href="/assets/icons/icon-delete.svg#icon"></use>
+                </svg>
+            </div>
+        </div>
+        <div class="item sum">
+            <span class="title">Gesamtsumme</span>
+            <div class="infoBox contrast full">
+                {{totalSum$ | async | waehrung}}
+            </div>
+        </div>
+    </div>
+</div>

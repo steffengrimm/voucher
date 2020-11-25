@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10.557945 10.129832">
+    <g id="icon" transform="translate(4.5230203,-70.441036)" style="fill:none;stroke:var(--stroke,#ffffff);stroke-width:1.27400005;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1">
+        <g transform="matrix(0.29195384,0,0,-0.29158163,3.5909701,80.383885)">
+            <path d="M 0,0 3.528,29.862 H -22.949 L -19.421,0"/>
+        </g>
+        <g transform="matrix(0.29195384,0,0,-0.29158163,-0.3645084,73.611469)">
+            <path d="M 0,0 V -18.833"/>
+        </g>
+        <g transform="matrix(0.29195384,0,0,-0.29158163,1.8763801,73.611469)">
+            <path d="M 0,0 V -18.833"/>
+        </g>
+        <g transform="matrix(0.29195384,0,0,-0.29158163,-1.0435959,70.625411)">
+            <path d="M 0,0 H 12.328"/>
+        </g>
+    </g>
+</svg>

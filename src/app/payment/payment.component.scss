@@ -1,0 +1,207 @@
+@import "../../variables.scss";
+
+:host {
+    display: block;
+    flex: 1;
+    height: 0;
+}
+
+article {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 100%;
+    height: 100%;
+}
+
+.paymentMethods {
+    width: 100%;
+    max-width: 300px;
+    padding: 20px 0;
+}
+
+.payment-method {
+    display: flex;
+    align-items: center;
+    line-height: 1;
+    margin-top: 10px;
+
+    app-radio-button {
+        width: 30px;
+        height: 30px;
+        margin-right: 15px;
+    }
+
+    span {
+        flex: 1;
+    }
+
+    img {
+        height: 26px;
+        justify-self: flex-end;
+
+        &:not(:last-of-type) {
+            margin-right: 3px;
+        }
+
+        &:not(:first-of-type) {
+            margin-left: 3px;
+        }
+    }
+}
+
+.hide {
+    display: none;
+}
+
+.cc-form {
+    width: 255px;
+    margin: 10px 0;
+
+    > div {
+        height: 34px;
+        margin: 10px 0;
+        display: flex;
+    }
+
+    input {
+        height: 100%;
+        width: 100%;
+
+        &:focus {
+            outline: none !important;
+        }
+    }
+
+    .cc-field {
+        flex: 1;
+
+        &:not(:first-child) {
+            margin-left: 5px;
+        }
+
+        &:not(:last-child) {
+            margin-right: 5px;
+        }
+    }
+}
+
+////////////////////////////////////////
+
+.finalStep {
+    > div {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+
+        > div {
+            width: 100%;
+        }
+    }
+    
+    .mwst {
+        justify-content: center;
+        align-items: center;
+        height: 25px;
+        width: 100%;
+        text-align: center;
+        padding: 0 15px;
+    }
+
+    .agb {
+        font-size: 12px;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        margin: 10px 10px 0;
+        padding: 0 15px;
+    }
+
+    .receiverInfo {
+        padding: 0;
+    }
+
+    .receiverInfo, .itemOverview {
+        > div {
+            padding: 0 30px;
+        }
+
+        @media screen and (min-width: $mobileBreakpoint) {
+            flex-direction: row;
+            max-width: 320px;
+
+            .receiver {
+                flex: 2;
+            }
+
+            .selectionPaymentMethod {
+                flex: 1;
+            }
+
+            > div {
+                padding: 0;
+            }
+
+            hr {
+                display: none;
+            }
+        }
+    }
+
+    .selectionPaymentMethod {
+        .payment-method {
+            @media screen and (min-width: $mobileBreakpoint) {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            img {
+                height: 20px;
+            }
+
+            > div {
+                display: flex;
+                margin: 3px 0;
+            }
+        }
+    }
+}
+
+.itemOverview {
+    .item {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: 12px 35px;
+        column-gap: 12px;
+        row-gap: 2px;
+        margin: 8px 0;
+
+        .title {
+            text-align: center;
+            font-size: 11px;
+        }
+
+        .infoBox {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-size: 16px;
+            border-radius: 2px;
+            font-weight: bold;
+        }
+
+        &.sum {
+            margin-top: 15px;
+
+            > * {
+                grid-column: 3 / span 1;
+            }
+        }
+    }
+}
+
+hr {
+    margin-top: 10px;
+}

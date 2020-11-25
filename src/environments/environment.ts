@@ -3,7 +3,11 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  apiUrl: 'http://desktop-g3ks44q:3000/shop/',
+  assetsUrl: 'http://desktop-g3ks44q:3000/assets/',
+  tokenName: "reservision_voucher_access_token",
+  whitelistedJwtDomains: ["desktop-g3ks44q:3000","localhost:3000"]
 };
 
 /*

@@ -1,0 +1,45 @@
+<div class="aside left">
+    <div>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36.9 25.5" version="1.1">
+            <use xlink:href="/assets/icons/icon-close2.svg#icon"></use>
+        </svg>
+    </div>
+    <div (click)="openImpressum()">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36.9 25.5" version="1.1">
+            <use xlink:href="/assets/icons/icon-impressum.svg#icon"></use>
+        </svg>
+    </div>
+</div>
+<div class="progress">
+    <span>{{title$ | async}}</span>
+    <div class="bullets">
+        <div *ngFor="let bullet of progress$ | async" [class.active]="bullet"></div>
+    </div>
+</div>
+<div class="aside right">
+    <div (click)="openCart()">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24.4 24.4">
+            <g id="icon">
+                <g style="fill:none;stroke:var(--stroke,#fff);stroke-linecap:round;stroke-linejoin:round;">
+                    <circle cx="9.2" cy="20.1" r="2.4"/>
+                    <circle cx="20.4" cy="20.1" r="2.4"/>
+                </g>
+                <g style="fill:none;stroke:var(--stroke, #fff);stroke-linecap:round;stroke-linejoin:round;">
+                    <line x1="9" y1="17.8" x2="20.7" y2="17.8"/>
+                    <polyline points="4.7,4.7 7.4,15.5 21.9,15.5 23.7,4.7"/>
+                    <polyline points="6.7,12.7 4,1.9 0.4,1.9"/>
+                </g>
+                <g id="content" *ngIf="(numberOfVouchers$ | async) > 0">
+                    <polygon style="fill:var(--fill);" points="6.9,2.5 9.6,12.8 19.7,12.8 21.6,2.5 14.5,2.5"/>
+                    <polygon style="fill:none;stroke:var(--fill);stroke-linecap:round;stroke-linejoin:round;" points="6.9,2.5 9.6,12.8 19.7,12.8 21.6,2.5 14.5,2.5 		"/>
+                    <text transform="matrix(1 0 0 1 14.5886 10.501)" style="text-anchor:middle;fill:var(--font,#fff);font-family:'Roboto';font-size:9px">{{numberOfVouchers$ | async}}</text>
+                </g>
+            </g>
+        </svg>            
+    </div>
+    <div class="contact" (click)="openContact()">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 17.8">
+            <use xlink:href="/assets/icons/icon-mail-telefon.svg#icon"></use>
+        </svg>
+    </div>
+</div>

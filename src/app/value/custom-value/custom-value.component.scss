@@ -1,0 +1,75 @@
+@import "../../../variables.scss";
+
+:host {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.headline {
+    text-transform: uppercase;
+    height: 58px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 15px;
+
+    @media screen and (min-width: $mobileBreakpoint){
+        height: 50px;
+    }
+}
+
+.numberBlock {
+    display: grid;
+    grid-template-columns: repeat(3, 50px);
+    grid-template-rows: repeat(4, 50px);
+    column-gap: 22px;
+    row-gap: 22px;
+    font-size: 18px;
+
+    > div {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 2px;
+        border: 1px solid currentColor;
+        cursor: pointer;
+        user-select: none;
+
+        &.full {
+            border: none;
+        }
+    }
+}
+
+hr {
+    max-width: 330px;
+    width: 90%;
+    margin: 10px 0;
+
+    @media screen and (min-width: $mobileBreakpoint){
+        width: 265px;
+    }
+}
+
+input {
+    height: 53px;
+    width: 136px;
+    pointer-events: none;
+    border: none;
+    border-radius: 2px;
+    text-align: center;
+    font-size: 30px;
+}
+
+button {
+    height: 39px;
+    width: 136px;
+    margin: 3px;
+    border-radius: 2px;
+    border: none;
+    text-transform: uppercase;
+    color: inherit;
+}

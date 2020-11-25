@@ -1,0 +1,22 @@
+@import "../../variables.scss";
+
+:host {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    height: 58px;
+
+    @media screen and (min-width: $mobileBreakpoint){
+        height: 50px;
+    }
+}
+
+button {
+    height: 39px;
+    width: 144px;
+    max-width: 40%;
+    margin: 3px;
+
+    text-transform: uppercase;
+}

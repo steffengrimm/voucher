@@ -1,0 +1,101 @@
+<article>
+    <form [formGroup]="userForm">
+        <div class="formFrame" formGroupName="loginData">
+            <div class="inline">
+                <app-decorated-input type="email" autocomplete="email" formControlName="checkEmail" [readonly]="currentLoginMode !== loginModes.check">E-Mail-Adresse</app-decorated-input>
+                <app-decorated-input type="email" autocomplete="off" formControlName="checkEmailRetype" *ngIf="currentLoginMode === loginModes.capture">E-Mail-Adresse wiederholen</app-decorated-input>
+            </div>
+            <hr *ngIf="currentLoginMode === loginModes.capture">
+            <div class="title-selection" formGroupName="userData" *ngIf="currentLoginMode === loginModes.capture">
+                <label class="labeled-radioBox" for="prefix_m">
+                    <input class="labeled-radioBox" type="radio" formControlName="prefix" value="MR" id="prefix_m">
+                    <span>Herr</span>
+                </label>
+                <label class="labeled-radioBox" for="prefix_f">
+                    <input class="labeled-radioBox" type="radio" formControlName="prefix" value="MS" id="prefix_f">
+                    <span>Frau</span>
+                </label>
+                <app-decorated-input autocomplete="title" formControlName="title">Titel</app-decorated-input>
+            </div>
+            <div class="inline" formGroupName="userData" *ngIf="currentLoginMode === loginModes.capture">
+                <app-decorated-input autocomplete="given-name" formControlName="firstName">Vorname</app-decorated-input>
+                <app-decorated-input autocomplete="family-name" formControlName="lastName">Nachname</app-decorated-input>
+            </div>
+            <div class="inline" formGroupName="userData" *ngIf="currentLoginMode === loginModes.capture">
+                <app-decorated-input autocomplete="organization" formControlName="company">Firma</app-decorated-input>
+                <app-decorated-input type="tel" formControlName="phone">Telefon</app-decorated-input>
+            </div>
+        </div>
+        <div class="invoice-wanted" *ngIf="currentLoginMode === loginModes.capture">
+            <label class="labeled-radioBox" for="invoice_wanted">
+                <input class="labeled-radioBox" type="checkbox" formControlName="invoiceWanted" id="invoice_wanted">
+                <span>Quittung benötigt?</span>
+            </label>
+        </div>
+        <div class="formFrame" formGroupName="invoiceData" *ngIf="invoiceVisibility">
+            <div class="bill-address">
+                <span>Rechnungsanschrift</span>
+            </div>
+            <div class="inline">
+                <div class="always-inline">
+                    <app-decorated-input formControlName="street">Straße</app-decorated-input>
+                    <app-decorated-input formControlName="houseNumber" style="max-width: 47px;">Nr.</app-decorated-input>
+                </div>
+                <div class="always-inline">
+                    <app-decorated-input autocomplete="postal-code" formControlName="zip" style="max-width: 66px;">PLZ</app-decorated-input>
+                    <app-decorated-input formControlName="city">Ort</app-decorated-input>
+                </div>
+            </div>
+            <div class="inline">
+                <app-decorated-input formControlName="costCentre">Kostenstelle</app-decorated-input>
+                <app-decorated-input formControlName="vatId">USt-IdNr</app-decorated-input>
+            </div>
+            <div class="inline">
+                <app-decorated-input formControlName="addressSuffix">Adresszusatz</app-decorated-input>
+            </div>
+        </div>
+    </form>
+    <span class="required-info" *ngIf="currentLoginMode !== loginModes.check; else emailStates">
+        Pflichtfeld
+    </span>
+    <ng-template #emailStates>
+        <div class="email-status">
+            <div *ngIf="emailInvalid; else validState">
+                Geben Sie eine gültige E-Mail-Adresse ein.
+            </div>
+            <ng-template #validState>
+                <div *ngIf="currentUserState === userStates.UNKNOWN">
+                    <span class="info">Sie nutzen zum ersten Mal RESERViSiON oder haben bisher noch kein Profil bei uns angelegt.<br/>Bitte erfassen Sie hier Ihre Daten.</span>
+                    <button [routerLink]="['/login/capture']">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 31.49 31.49">
+                            <use xlink:href="/assets/icons/icon-stift.svg#icon"><title>Daten erfassen</title></use>
+                        </svg>
+                        <span>Daten erfassen</span>
+                    </button>
+                </div>
+                <div *ngIf="currentUserState === userStates.COMPLETE || currentUserState === userStates.INVOICEDATAMISSING">
+                    <div>
+                        <button disabled>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 31.49 31.49">
+                                <use xlink:href="/assets/icons/icon-check.svg#icon"><title>E-Mail erkannt</title></use>
+                            </svg>
+                            <span>E-Mail erkannt</span>
+                        </button>
+                        <button>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 31.49 31.49">
+                                <use xlink:href="/assets/icons/icon-stift.svg#icon"><title>Daten aktualisieren</title></use>
+                            </svg>
+                            <span>Daten aktualisieren</span>
+                        </button>
+                        <button [routerLink]="['/login/invoice']" *ngIf="currentUserState === userStates.INVOICEDATAMISSING">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 31.49 31.49">
+                                <use xlink:href="/assets/icons/icon-rechnung.svg#icon"><title>Rechnungsdaten erfassen?</title></use>
+                            </svg>
+                            <span>Rechnungsdaten erfassen?</span>
+                        </button>
+                    </div>
+                </div>
+            </ng-template>
+        </div>
+    </ng-template>
+</article>

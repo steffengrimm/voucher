@@ -1,0 +1,109 @@
+@import "../../variables.scss";
+
+:host {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    height: 0;
+    position: relative;
+
+    &:before, &:after {
+        content: '';
+        height: 10px;
+        width: 100%;
+        position: absolute;
+    }
+
+    &:after {
+        bottom: 0;
+        transform: scaleY(-1);
+    }
+}
+
+$fullScreenImageSize: 365px;
+$mobileImageSize: 396px;
+
+.scrollHorizontalInner {
+    margin-bottom: var(--scrollBarSize);
+    min-height: 100%;
+    display: flex;
+    align-items: center;
+    scroll-behavior: smooth;
+}
+
+.previewContainer {
+    display: flex;
+    height: 100%;
+    width: max-content;
+
+    &.single {
+        width: 100%;
+    }
+
+    .preview {
+        //width: 278px;
+        display: flex;
+        justify-content: center;
+        position: relative;
+        margin: auto;
+        height: auto;
+        max-width: $mobileImageSize;
+        width: 100vw;
+        padding: 14px;
+        //box-sizing: content-box;
+
+        &.spacer {
+            width: 50vw;
+            max-width: $mobileImageSize / 2;
+        }
+
+        &:not(.active) {
+            filter: opacity(0.2);
+        }
+    
+        @media screen and (min-width: $mobileBreakpoint){
+            width: $fullScreenImageSize;
+            max-width: unset;
+
+            &.spacer {
+                width: $fullScreenImageSize / 2;
+            }
+        }
+    
+        img {
+            cursor: pointer;
+            max-height: $mobileImageSize;
+            max-width: 90%;
+            box-shadow: 3px 3px 3px #abaaa9;
+
+            @media screen and (min-width: 520px){
+                max-height: $fullScreenImageSize;
+            }
+        }
+    }
+    
+    .navigation {
+        position: absolute;
+        top: 50%;
+    }
+}
+
+.bullets {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    height: auto;
+
+    > div {
+        height: 22px;
+        width: 22px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        border-radius: 50%;
+        margin-bottom: 10px;
+        user-select: none;
+        cursor: pointer;
+    }
+}

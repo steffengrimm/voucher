@@ -1,0 +1,17 @@
+<div class="scrollHorizontalOuter">
+    <div class="scrollHorizontalInner" #previewScrollBox>
+        <div class="previewContainer" [class.single]="availableLayouts.length === 1">
+            <div *ngIf="availableLayouts.length > 1" class="preview spacer"></div>
+            <div *ngFor="let layout of availableLayouts; let i = index" class="preview" [class.active]="layout == (currentLayout$ | async)" (click)="selectLayout(i)" #layoutPreview>
+                <img [src]="getPreviewForLayout(layout)">
+            </div>
+            <div *ngIf="availableLayouts.length > 1" class="preview spacer"></div>
+        </div>
+    </div>
+</div>
+
+<div class="bullets" *ngIf="availableLayouts?.length > 1 || true">
+    <div *ngFor="let layout of availableLayouts; let i = index" [class.active]="layout == (currentLayout$ | async)" (click)="selectLayout(i)">
+        {{i + 1}}
+    </div>
+</div>

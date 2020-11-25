@@ -1,0 +1,268 @@
+@import "../../variables.scss";
+
+:host {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    height: 100%;
+    overflow-y: scroll;
+    margin-right: var(--scrollBarSize);
+}
+
+article {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    form {
+        display: block;
+        max-height: 100%;
+        overflow-y: auto;
+        padding: 20px 0;
+        width: 100%;
+    }
+
+    .formFrame, .email-status {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        app-decorated-input {
+            width: 100%;
+            max-width: 270px;
+            margin-top: 10px;
+        }
+    }
+
+    .formFrame {
+        width: 100%;
+
+        > div {
+            width: 100%;
+            padding: 0 5%;
+        }
+    }
+
+    .email-status {
+        width: 270px;
+    }
+
+    .required-info {
+        margin: 10px 0;
+        font-size: 8pt;
+        line-height: 15px;
+        width: 64px;
+        text-align: center;
+        border-radius: 3px;
+        user-select: none;
+    }
+}
+
+.title-selection > label {
+    height: 36px;
+    width: 53px;
+}
+
+.invoice-wanted {
+    margin-top: 20px;
+    padding: 25px 0 10px;
+    text-align: center;
+
+    label {
+        width: 185px;
+        height: 32px;
+        text-transform: uppercase;
+    }
+}
+
+.bill-address {
+    display: flex;
+    align-items: center;
+    padding-top: 5px;
+    margin-top: 10px;
+    font-size: 7pt;
+
+    span {
+        display: block;
+        flex: 1;
+        font-size: 10pt;
+    }
+
+    > div {
+        display: inherit;
+    }
+
+    label {
+        width: 40px;
+        height: 35px;
+
+        &:not(:first-of-type) {
+            margin-left: 1px;
+        }
+    
+        &:not(:last-of-type) {
+            margin-right: 1px;
+        }
+    }
+
+    button {
+        padding: 0;
+        width: 86px;
+        margin-left: 2px;
+        font-size: inherit;
+    }
+}
+
+.email-status {
+    height: 180px;
+    margin-top: 20px;
+
+    > div{
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .info {
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+    }
+
+    span {
+        text-align: center;
+    }
+
+    button {
+        width: 190px;
+        height: auto;
+        display: flex;
+        align-items: center;
+        padding: 0px;
+        border-radius: 24px;
+        padding-right: 6px;
+
+        svg {
+            box-sizing: content-box;
+            height: 32px;
+            padding: 6px;
+        }
+
+        span {
+            flex: 1;
+        }
+
+        &:not(:last-of-type) {
+            margin-bottom: 10px;
+        }
+
+        &:not(:disabled) {
+            cursor: pointer;
+        }
+    }
+}
+
+.inline {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    flex-direction: column;
+
+    @media screen and (min-width: $mobileBreakpoint) {
+        flex-direction: row;
+        justify-content: center;
+        align-items: unset;
+
+        > * {
+            flex: 1;
+
+            &:not(:first-child) {
+                margin-left: 4px;
+            }
+
+            &:not(:last-child) {
+                margin-right: 4px;
+            }
+        }
+    }
+}
+
+.always-inline {
+    display: flex;
+    max-width: 270px;
+    width: 100%;
+
+    app-decorated-input {
+        flex: 1;
+
+        &:not(:first-of-type) {
+            margin-left: 6px;
+        }
+
+        &:not(:last-of-type) {
+            margin-right: 6px;
+        }
+    }
+}
+
+.title-selection {
+    display: flex;
+    align-items: flex-end;
+    max-width: 270px;
+
+    @media screen and (min-width: $mobileBreakpoint) {
+        align-self: flex-start;
+    }
+
+    @media screen and (max-width: ($mobileBreakpoint - 1)) {
+        padding: 0 !important;
+    }
+
+    app-decorated-input {
+        margin-left: 3px;
+        width: 80px !important;
+    }
+}
+
+.labeled-radioBox {
+    display: inline-block;
+    height: auto;
+    width: auto;
+
+    &:not(:first-child) {
+        margin-left: 3px;
+    }
+
+    &:not(:last-child) {
+        margin-right: 3px;
+    }
+
+    input {
+        height: 0;
+        width: 0;
+        clip: rect(0 0 0 0);
+        margin: 0;
+        padding: 0;
+        outline: 0;
+        border: 0;
+        position: absolute;
+    }
+
+    span {
+        display: flex;
+        height: 100%;
+        width: 100%;
+        padding: 0 5px;
+        justify-content: center;
+        align-items: center;
+        user-select: none;
+        border: 1px solid currentColor;
+        border-radius: 2px;
+    }
+}
+
+hr {
+    margin-top: 20px;
+}

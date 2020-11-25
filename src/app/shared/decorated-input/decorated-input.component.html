@@ -1,0 +1,5 @@
+<div class="frame">
+    <input [type]="type" [autocomplete]="autocomplete" [formControl]="inputControl" [class.focused]="isFocused" [readonly]="readonly">
+    <span class="label"><ng-content></ng-content></span>
+    <ng-content select=".symbol"></ng-content>
+</div>

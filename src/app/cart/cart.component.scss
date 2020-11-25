@@ -1,0 +1,94 @@
+@import "../../variables.scss";
+
+:host {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+}
+
+.headline {
+    text-transform: uppercase;
+    height: 58px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 15px;
+
+    @media screen and (min-width: $mobileBreakpoint){
+        height: 50px;
+    }
+}
+
+.mwst {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 25px;
+    width: 100%;
+    text-align: center;
+    padding: 0 15px;
+}
+
+.itemOverview {
+    flex: 1;
+    height: 0;
+    overflow: hidden;
+
+    >div {
+        height: 100%;
+        margin-right: var(--scrollBarSize);
+        overflow-y: scroll;
+    }
+
+    .item {
+        display: grid;
+        grid-template-columns: 1fr 107px 1fr 24px;
+        grid-template-rows: 12px 35px;
+        column-gap: 12px;
+        row-gap: 2px;
+        margin: 8px 0;
+
+        .title {
+            text-align: center;
+            font-size: 11px;
+        }
+
+        app-quantity {
+            --bg: #fff;
+            border-radius: 2px;
+            font-size: 26px;
+        }
+
+        .infoBox {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-size: 16px;
+            border-radius: 2px;
+            font-weight: bold;
+        }
+
+        .delete {
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+
+            svg {
+                height: 100%;
+            }
+        }
+
+        &.sum {
+            margin-top: 15px;
+
+            > * {
+                grid-column: 3 / span 1;
+            }
+        }
+    }
+}

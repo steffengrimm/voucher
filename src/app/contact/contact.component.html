@@ -1,0 +1,35 @@
+<div class="headline">Kontakt</div>
+<div class="contactButtons">
+    <div>
+        <a class="aButton active" *ngIf="phoneNumber" [href]="'tel:'+cleanPhoneNumber">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26.36 27.45">
+                <use xlink:href="/assets/icons/icon-phone.svg#icon"></use>
+            </svg>
+            <span>{{phoneNumber}}</span>
+        </a>
+        <a class="aButton active" *ngIf="email" [href]="'mailto:'+email">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28.32 21.26">
+                <use xlink:href="/assets/icons/icon-mail.svg#icon"></use>
+            </svg>
+            <span>{{email}}</span>
+        </a>
+        <div class="socialMedia">
+            <button class="active" *ngIf="socialMedia?.fb" (click)="social('fb')">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 13.29 28.79">
+                    <use xlink:href="/assets/icons/social/icon-facebook.svg#icon"></use>
+                </svg>
+            </button>
+            <button class="active" *ngIf="socialMedia?.ig" (click)="social('ig')">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29.19 29.19">
+                    <use xlink:href="/assets/icons/social/icon-instagram.svg#icon"></use>
+                </svg>
+            </button>
+            <button class="active" *ngIf="socialMedia?.twitter">Twitter</button>
+        </div>
+    </div>
+</div>
+<div class="footer">
+    <a (click)="openImprint('AGB')">AGB</a>
+    <a (click)="openImprint('PRIVACY')">Datenschutz</a>
+    <a (click)="openImprint('DISCLAIMER')">Impressum</a>
+</div>

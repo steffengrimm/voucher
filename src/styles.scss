@@ -1,1 +1,54 @@
 /* You can add global styles to this file, and also import other style files */
+@import "./variables";
+
+* {
+    box-sizing: border-box;
+  
+    &:focus {
+      outline: none !important;
+    }
+  }
+
+  
+
+  html {
+    height: 100%;
+  }
+  
+  body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100%;
+    background-color: hsla(30, 1%, 21%, 0.8);
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  .scrollHorizontalOuter {
+    overflow: hidden;
+    height: 100%;
+
+    .scrollHorizontalInner {
+      overflow-y: hidden;
+      overflow-x: scroll;
+      margin-bottom: var(--scrollBarSize);
+    }
+  }
+
+  button {
+    border: none;
+  }
+
+  .aButton {
+    text-decoration: none;
+    text-align: center;
+    text-decoration: none;
+  }
+
+hr {
+    width: 100%;
+    border-bottom-width: 0;
+    margin: 0;
+}

@@ -1,0 +1,23 @@
+<div class="valueQuantity">
+    <div class="valueBox">
+        <div class="presetValues">
+            <div *ngFor="let preset of presetValues" (click)="setPresetValue(preset)" [class.active]="(currentValue | async) === preset && currentValueIsPreset">
+                {{preset | waehrung}}
+            </div>
+            <div class="customValue" [class.active]="!currentValueIsPreset" (click)="selectCustomValue()">
+                <ng-container *ngIf="currentValueIsPreset; else customValue">Eigener Betrag</ng-container>
+                <ng-template #customValue>{{(currentValue$ | async) | waehrung}}</ng-template>
+            </div>
+        </div>
+        <span *ngIf="valueBoundaries">mind. Betrag {{valueBoundaries.min | waehrung}} | max. Betrag {{valueBoundaries.max | waehrung}}</span>
+    </div>
+    <div class="quantityBox">
+        <app-quantity [input]="currentQuantity$ | async" (output)="setQuantity($event)"></app-quantity>
+        <div class="totalPrice">{{currentSum | waehrung}}</div>
+    </div>
+</div>
+<hr>
+<div class="nextVoucher">
+    Weiterer Gutschein
+    <button class="plus" (click)="continueWithNextVoucher()" [class.active]="isInputValid">+</button>
+</div>

@@ -1,0 +1,200 @@
+@function color($base, $percent) {
+    @return mix($base,white,$percent)
+}
+$highlight: #003a80;
+$contrast: #d5b05e;
+$required: #e2001a;
+$borderRadius: 2px;
+$background: #fff;
+:root {
+    --background: #{$background};
+}
+button, .aButton {
+    background-color: #{color($highlight, 30)};
+    color: #{color($highlight, 60)};
+    border-radius: $borderRadius;
+	border:none;
+	
+    &.active {
+        background-color: $contrast;
+        color: #fff;
+    }
+}
+hr {
+    border-top-color: #{color($highlight, 40)};
+}
+app-main {
+    color: #666666;
+    background-color: #fff;
+}
+app-top-bar, app-footer {
+    background-color: $highlight;
+    color: #fff;
+}
+app-top-bar {
+    --stroke: #fff;
+    --fill: #{$contrast};
+    .bullets {
+        color: #fff;
+    }
+    .contact {
+        background-color: $contrast;
+    }
+}
+app-layout {
+    &:before, &:after {
+        background: linear-gradient(#abaaa9 -5px, transparent 100%);
+    }
+    .bullets .active {
+        background-color: $highlight;
+        color: #fff;
+    }
+}
+app-value {
+    .presetValues > * {
+        background-color: $highlight;
+        color: #fff;
+        &.active {
+            background-color: $contrast;
+        }
+    }
+    
+    .totalPrice {
+        background-color: $highlight;
+        color: #eee;
+    }
+}
+app-quantity {
+    border: 1px solid $contrast;
+    background-color: transparent;
+	color: #fff;
+	
+    .square > div {
+        background-color: $contrast;
+        &.value {
+            background-color: transparent;
+            color: $highlight;
+        }
+    }
+}
+app-login {
+    .required-info {
+        background-color: $required;
+        color: #fff;
+    }
+    .title-selection > label, .invoice-wanted > label {
+        color: $highlight;
+    }
+    .email-status button {
+        background-color: $highlight;
+        color: #fff;
+        &:disabled {
+            background-color: #{color($highlight, 40)};
+            color: #ffffff;
+        }
+    }
+    .labeled-radioBox:checked + span {
+        background-color: $highlight;
+        border-color: $highlight !important;
+        color: #fff !important;
+    }
+    
+    app-decorated-input {
+        color: $highlight;
+    }
+}
+app-decorated-input {
+    &.ng-invalid.ng-dirty, &.required.ng-invalid.ng-touched {
+        color: $required;
+    }
+    .frame {
+        background-color: $background;
+        border: 1px solid $highlight;
+        border-radius: $borderRadius;
+        .label {
+            color: inherit;
+        }
+    }
+    &:not(.no-marker) .frame::before {
+        background-color: #{color($highlight, 40)};
+    }
+    &.required .frame::before {
+        background-color: $required;
+    }
+    &.required.focused.ng-valid .frame::before {
+        background-color: $highlight;
+    }
+    input.focused ~ .label, input:focus ~  .label {
+        color: inherit;
+    }
+}
+app-regular-overlay {
+    background-color: #{transparentize($color: $highlight, $amount: 0.05)};
+    color: #fff;
+}
+app-custom-value {
+    .numberBlock {        
+        color: #{color($highlight, 30)};
+    
+        > div.full {
+            background-color: #{color($highlight, 30)};
+            color: $highlight;
+        }
+    }
+    input {
+        color: $highlight;
+    }
+    
+    button {
+        background-color: $contrast;
+    }
+}
+app-payment {
+    color: $highlight;
+    app-radio-button {
+        .inner {
+            color: #{color($highlight, 40)};
+            border-color: #{color($highlight, 60)};
+        }
+        input:checked ~ .inner {
+            color: #{color($contrast, 60)};
+            border-color: $contrast;
+        }
+    }
+	.cc-field {
+		border: 1px solid currentColor;
+	}
+}
+app-cart, app-payment {
+    .mwst {
+        background-color: #{color($highlight, 60)};
+        color: #fff;
+    }
+    .infoBox {
+        border-radius: $borderRadius;
+        border: 1px solid #{color($highlight, 60)};
+        &.contrast {
+            border-color: $contrast;
+            &.full {
+                background-color: $contrast;
+                color: #fff;
+            }
+        }
+    }
+    app-quantity .square > div.value {
+        background-color: #fff;
+    }
+}
+app-contact .footer {
+    border-top: 1px solid #{color($highlight, 40)};
+}
+app-result {
+    color: $highlight;
+    background-color: $background;
+    .article {
+        border-bottom: 4px solid $highlight;
+    }
+    .thanks {
+        color: $contrast;
+    }
+}

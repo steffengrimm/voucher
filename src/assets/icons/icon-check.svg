@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 31.49 31.49">
+    <g id="icon">
+        <path style="fill:var(--fill,#fff);" d="M15.74,31.49A15.75,15.75,0,1,0,0,15.74,15.75,15.75,0,0,0,15.74,31.49" />
+        <polyline style="fill:none;stroke:var(--stroke,#000);stroke-linecap:round;stroke-linejoin:round;stroke-width:0.94px;" points="9.94 16.56 14.93 21.71 21.55 9.77" />
+    </g>
+</svg>

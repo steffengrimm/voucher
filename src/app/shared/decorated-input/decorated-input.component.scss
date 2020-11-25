@@ -1,0 +1,60 @@
+@import "../../../variables.scss";
+
+$input-height: 14px;
+$input-padding: 8px;
+
+:host {
+    display: flex;
+    height: auto;
+    padding-top: 10px;
+}
+
+.frame {
+    display: flex;
+    padding: 1px;
+    position: relative;
+    height: 100%;
+    flex: 1;
+
+    :host:not(.no-marker) &::before {
+        content: "";
+        position: absolute;
+        display: block;
+        height: calc(100% - 4px);
+        width: 4px;
+        top: 50%;
+        left: 4px;
+        transform: translate(-50%,-50%);
+    }
+
+    .label {
+        position: absolute;
+        top: 50%;
+        left: 5px;
+        line-height: 1;
+        background-color: transparent;
+        padding: 0 4px;
+        transition: transform 200ms ease-in-out;
+        user-select: none;
+        transform: translateY(-50%);
+        pointer-events: none;
+    }
+}
+
+input {
+    box-sizing: content-box;
+    border: none;
+    height: $input-height;
+    padding: $input-padding;
+    margin: 1px;
+    flex: 1;
+    width: 0;
+    outline: none !important;
+    font-size: 16px;
+    color: inherit;
+    background-color: transparent;
+
+    &.focused ~ .label, &:focus ~ .label {
+        transform: translateY(-$input-padding - $input-height - 2) translate(-50%,-50%) scale(0.8) translateX(50%) !important;
+    }
+}

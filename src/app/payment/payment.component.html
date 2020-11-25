@@ -1,0 +1,123 @@
+<article class="preparation" [class.hide]="(isLastPage$ | async)">
+    <div class="paymentMethods">
+        <div *ngIf="paymentMethods.includes('CASH')" class="payment-method">
+            <app-radio-button [(ngModel)]="selectedPaymentMethod" value="CASH"></app-radio-button>
+            <span>Bar</span>
+            <img src="/assets/icons/icon-geldbeutel.svg">
+        </div>
+        <div *ngIf="paymentMethods.includes('ELECTRONICCASH')" class="payment-method">
+            <app-radio-button [(ngModel)]="selectedPaymentMethod" value="ELECTRONICCASH"></app-radio-button>
+            <span>EC-Karte</span>
+            <img src="/assets/icons/payment/electronic-cash.svg">
+        </div>
+        <div *ngIf="paymentMethods.includes('PAYPAL')" class="payment-method">
+            <app-radio-button [(ngModel)]="selectedPaymentMethod" value="PAYPAL"></app-radio-button>
+            <span>PayPal</span>
+            <img src="/assets/icons/payment/paypal.svg">
+        </div>
+        <div *ngIf="paymentMethods.includes('CREDITCARD')" class="payment-method">
+            <app-radio-button [(ngModel)]="selectedPaymentMethod" value="CREDITCARD"></app-radio-button>
+            <span>Kreditkarte</span>
+            <img src="/assets/icons/payment/visa.svg"><img src="/assets/icons/payment/americanexpress.svg"><img src="/assets/icons/payment/mastercard.svg">
+        </div>
+        <div *ngIf="hasPaymentRequest() && paymentMethods.includes('MOBILEPAYMENT')" class="payment-method">
+            <app-radio-button [(ngModel)]="selectedPaymentMethod" value="MOBILEPAYMENT"></app-radio-button>
+            <span>
+                <ng-template [ngIf]="hasApplePay()" [ngIfElse]="googlepayText">Apple Pay</ng-template>
+                &emsp;
+                <ng-template #googlepayText>Google Pay</ng-template>
+            </span>
+            <ng-template [ngIf]="hasApplePay()" [ngIfElse]="googlepayImg">
+                <img src="/assets/icons/payment/apple-pay.svg">
+            </ng-template>
+            <ng-template #googlepayImg>
+                <img src="/assets/icons/payment/google-pay.svg">
+            </ng-template>
+        </div>
+    </div>
+    <hr>
+    <div class="creditcardInput" [class.hide]="!showCardForm">
+        <form class="cc-form" [formGroup]="ccForm">
+            <div>
+                <input type="text" formControlName="cardHolder" placeholder="Karteninhaber"/>
+            </div>
+            <div>
+                <div class="cc-field" ref-cardNumber></div>
+            </div>
+            <div>
+                <div class="cc-field" ref-cardExpiry></div>
+                <div class="cc-field" ref-cardCvc></div>
+            </div>
+        </form>
+    </div>
+</article>
+<article class="finalStep" *ngIf="isLastPage$ | async">
+    <div class="mwst">
+        Alle Beträge inkl. MwSt.
+    </div>
+    <div class="agb">
+        Mit der kostenpflichtigen Bestellung akzeptieren Sie<br/>unsere AGB und unsere Datenschutzerklärung.
+    </div>
+    <hr>
+    <div class="receiverInfo">
+        <div class="receiver">
+            <h3>Empfänger</h3>
+            Versand per E-Mail <b>(print@home)</b><br/>
+            {{customerData}}
+        </div>
+        <hr>
+        <div class="selectionPaymentMethod">
+            <h3>Zahlart</h3>
+            <div *ngIf="selectedPaymentMethod === 'CASH'" class="payment-method">
+                <span>Bar</span>
+                <div>
+                    <img src="/assets/icons/icon-geldbeutel.svg">
+                </div>
+            </div>
+            <div *ngIf="selectedPaymentMethod === 'ELECTRONICCASH'" class="payment-method">
+                <span>EC-Karte</span>
+                <div>
+                    <img src="/assets/icons/payment/electronic-cash.svg">
+                </div>
+            </div>
+            <div *ngIf="selectedPaymentMethod === 'PAYPAL'" class="payment-method">
+                <span>PayPal</span>
+                <div>
+                    <img src="/assets/icons/payment/paypal.svg">
+                </div>
+            </div>
+            <div *ngIf="selectedPaymentMethod === 'CREDITCARD'" class="payment-method">
+                <span>Kreditkarte</span>
+                <div>
+                    <img src="/assets/icons/payment/visa.svg"><img src="/assets/icons/payment/americanexpress.svg"><img src="/assets/icons/payment/mastercard.svg">
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="itemOverview">
+        <div>
+            <h3>Gutscheine</h3>
+            <div *ngFor="let voucher of allItems$ | async" class="item">
+                <span class="title">Einzelpreis</span>
+                <span class="title">Menge</span>
+                <span class="title">Summe</span>
+                <div class="infoBox">
+                    {{voucher.initialValue | waehrung}}
+                </div>
+                <div class="infoBox contrast">
+                    {{voucher.quantity}}
+                </div>
+                <div class="infoBox">
+                    {{voucher.getTotalPrice() | waehrung}}
+                </div>
+            </div>
+            <div class="item sum">
+                <span class="title">Gesamtsumme</span>
+                <div class="infoBox contrast full">
+                    {{totalSum$ | async | waehrung}}
+                </div>
+            </div>
+        </div>
+    </div>
+</article>

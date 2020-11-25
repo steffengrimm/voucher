@@ -1,0 +1,10 @@
+<div class="headline">
+    <ng-container [ngSwitch]="headline">
+        <span *ngSwitchCase="'DISCLAIMER'">Impressum</span>
+        <span *ngSwitchCase="'PRIVACY'">Datenschutzerklärung</span>
+        <span *ngSwitchCase="'AGB'">AGB</span>
+    </ng-container>
+</div>
+<div class="textContainer">
+    <div class="text" [innerHtml]="text | markdown"></div>
+</div>
