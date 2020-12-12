@@ -1,49 +1,59 @@
 @function color($base, $percent) {
     @return mix($base,white,$percent)
 }
-$highlight: #003a80;
+$highlight: #00b1e7;
 $contrast: #d5b05e;
 $required: #e2001a;
 $borderRadius: 2px;
-$background: #fff;
-:root {
-    --background: #{$background};
-}
+$grey: #2d2a28;
+$background: pink;
+
 button, .aButton {
-    background-color: #{color($highlight, 30)};
-    color: #{color($highlight, 60)};
+    background-color: transparent;
+    color: #{color($grey, 55)};
     border-radius: $borderRadius;
-	border:none;
+    border: 1px solid currentColor;
+    
+    &.weak {
+        background-color: #{color($grey, 70)};
+        color: #{color($grey, 30)};
+        border: none;
+    }
 	
     &.active {
-        background-color: $contrast;
+        background-color: $highlight;
         color: #fff;
+        border: none;
     }
 }
 hr {
     border-top-color: #{color($highlight, 40)};
 }
 app-main {
-    color: #666666;
-    background-color: #fff;
+    color: #{color($grey, 30)};
+    background-color: #{color($grey, 90)};
 }
 app-top-bar, app-footer {
-    background-color: $highlight;
-    color: #fff;
+    background-color: #{color($grey, 95)};
+    color: $highlight;
 }
 app-top-bar {
-    --stroke: #fff;
-    --fill: #{$contrast};
+    --stroke: #{color($grey, 60)};
+    --fill: #{$highlight};
     .bullets {
-        color: #fff;
+        color: $highlight;
+        > div:not(.active) {
+            border-color: #{color($grey, 40)} !important;
+        }
     }
     .contact {
-        background-color: $contrast;
+        --stroke: #fff;
+        background-color: $highlight;
     }
 }
 app-layout {
     &:before, &:after {
-        background: linear-gradient(#abaaa9 -5px, transparent 100%);
+        background: linear-gradient($grey -5px, transparent 100%);
     }
     .bullets .active {
         background-color: $highlight;
@@ -52,10 +62,11 @@ app-layout {
 }
 app-value {
     .presetValues > * {
-        background-color: $highlight;
-        color: #fff;
+        background-color: #{color($highlight, 40)};
+        color: #{color($grey, 80)};
         &.active {
-            background-color: $contrast;
+            background-color: $highlight;
+            color: #fff;
         }
     }
     
@@ -65,12 +76,11 @@ app-value {
     }
 }
 app-quantity {
-    border: 1px solid $contrast;
-    background-color: transparent;
+    background-color: #fff;
 	color: #fff;
 	
     .square > div {
-        background-color: $contrast;
+        background-color: $highlight;
         &.value {
             background-color: transparent;
             color: $highlight;
@@ -82,12 +92,14 @@ app-login {
         background-color: $required;
         color: #fff;
     }
+    --stroke:#{$highlight};
     .title-selection > label, .invoice-wanted > label {
-        color: $highlight;
+        color: #{color($grey, 55)};
     }
     .email-status button {
         background-color: $highlight;
         color: #fff;
+        border: none;
         &:disabled {
             background-color: #{color($highlight, 40)};
             color: #ffffff;
@@ -108,11 +120,11 @@ app-decorated-input {
         color: $required;
     }
     .frame {
-        background-color: $background;
-        border: 1px solid $highlight;
+        background-color: transparent;
+        border: 1px solid #{color($grey, 55)};
         border-radius: $borderRadius;
         .label {
-            color: inherit;
+            color: #{color($grey, 55)};
         }
     }
     &:not(.no-marker) .frame::before {
@@ -125,20 +137,21 @@ app-decorated-input {
         background-color: $highlight;
     }
     input.focused ~ .label, input:focus ~  .label {
-        color: inherit;
+        color: #{color($grey, 55)};
     }
 }
 app-regular-overlay {
-    background-color: #{transparentize($color: $highlight, $amount: 0.05)};
-    color: #fff;
+    background-color: #{transparentize($color: $grey, $amount: 0.02)};
+    color: $highlight;
 }
 app-custom-value {
     .numberBlock {        
-        color: #{color($highlight, 30)};
+        color: #{color($grey, 40)};
+        border-color: currentColor;
     
         > div.full {
-            background-color: #{color($highlight, 30)};
-            color: $highlight;
+            background-color: $highlight;
+            color: #fff;
         }
     }
     input {
@@ -146,37 +159,48 @@ app-custom-value {
     }
     
     button {
-        background-color: $contrast;
+        background-color: $highlight;
+        color: #fff !important;
     }
 }
 app-payment {
-    color: $highlight;
+
     app-radio-button {
         .inner {
-            color: #{color($highlight, 40)};
-            border-color: #{color($highlight, 60)};
+            color: #{color($grey, 40)};
+            border-color: #{color($grey, 80)};
         }
         input:checked ~ .inner {
-            color: #{color($contrast, 60)};
-            border-color: $contrast;
+            color: #{color($highlight, 40)};
+            border-color: $highlight;
         }
+    }
+    input {
+        background-color: transparent;
+        color: #{color($grey, 40)};
+        border: 1px solid currentColor;
     }
 	.cc-field {
 		border: 1px solid currentColor;
 	}
 }
 app-cart, app-payment {
+    color: #{color($grey, 40)};
+
     .mwst {
-        background-color: #{color($highlight, 60)};
-        color: #fff;
+        background-color: #{color($grey, 80)};
+        color: #{color($grey, 30)};
+    }
+    .headline {
+        color: $highlight;
     }
     .infoBox {
         border-radius: $borderRadius;
-        border: 1px solid #{color($highlight, 60)};
+        border: 1px solid currentColor;
         &.contrast {
-            border-color: $contrast;
+            border-color: $highlight;
             &.full {
-                background-color: $contrast;
+                background-color: $highlight;
                 color: #fff;
             }
         }
@@ -189,12 +213,12 @@ app-contact .footer {
     border-top: 1px solid #{color($highlight, 40)};
 }
 app-result {
-    color: $highlight;
-    background-color: $background;
+    color: #{color($grey, 40)};
+    background-color: #{color($grey, 90)};
     .article {
         border-bottom: 4px solid $highlight;
     }
     .thanks {
-        color: $contrast;
+        color: $highlight;
     }
 }

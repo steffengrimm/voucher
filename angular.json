@@ -29,7 +29,11 @@
             ],
             "styles": [
               "src/styles.scss",
-              "src/theme.scss"
+              {
+                "input": "src/theme.scss",
+                "inject": false,
+                "bundleName": "theme"
+              }
             ],
             "scripts": []
           },

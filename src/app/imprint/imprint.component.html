@@ -6,5 +6,11 @@
     </ng-container>
 </div>
 <div class="textContainer">
-    <div class="text" [innerHtml]="text | markdown"></div>
+    <div class="url" *ngIf="!text; else hasText">
+        <span>Falls Ihr Browser PopUps blockiert, nutzen Sie bitte folgenden Link</span><br/><br/>
+        <a [href]="url" target="_blank">{{url}}</a>
+    </div>
+    <ng-template #hasText>
+        <div class="text" [innerHtml]="text | markdown"></div>
+    </ng-template>
 </div>

@@ -83,9 +83,7 @@ export class AppConfiguration {
     
         this.configStorage = await this.http.get(`${environment.apiUrl}widgetInfo`).toPromise() as WidgetConfig;
 
-        if(this.configStorage.hasCustomCSS) {
-          this.loadCustomCSS();
-        }
+        this.loadThemeCSS(this.configStorage.hasCustomCSS);
     
         if (this.configStorage.blocked) {
             this._initialized = AppInitiationState.DEACTIVATED;
@@ -155,11 +153,14 @@ export class AppConfiguration {
         }
     }
 
-    private loadCustomCSS() {
+    private loadThemeCSS(isCustom = false) {
       //console.log(this.tokenHandler.decodedToken.widgetHash);
       const link = document.createElement('link');
       link.rel = 'stylesheet';
-      link.href = environment.assetsUrl+"css/"+this.tokenHandler.decodedToken.widgetHash+".css";
+      if(isCustom)
+        link.href = environment.assetsUrl+"css/"+this.tokenHandler.decodedToken.widgetHash+".css";
+      else
+        link.href = "theme.css";
       document.head.appendChild(link);
     }
 }

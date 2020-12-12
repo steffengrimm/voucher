@@ -1,4 +1,4 @@
-<button *ngIf="canBackward$ | async" (click)="goBackward()">Zurück</button>
+<button class="weak" *ngIf="canBackward$ | async" (click)="goBackward()">Zurück</button>
 <button [class.active]="canForward$ | async" (click)="goForward()">
     <ng-container *ngIf="!(canStore$ | async); else storeButton">Weiter</ng-container>
     <ng-template #storeButton>Kostenpflichtig bestellen</ng-template>

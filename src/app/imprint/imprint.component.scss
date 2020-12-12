@@ -33,4 +33,13 @@
         overflow-y: scroll;
         margin-right: var(--scrollBarSize);
     }
+
+    .url {
+        text-align: center;
+
+        a {
+            text-decoration: underline dashed;
+            color: inherit;
+        }
+    }
 }
